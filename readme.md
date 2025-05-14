@@ -42,17 +42,6 @@ sudo systemctl status airsense.service ctrlbridge.service
 * **Unit-tested** — ≥ 90 % coverage on math, framing, filtering, fallback paths.
 
 ---
-
-## Directory Layout
-atmosense/                     # project root
-├─ atmosense-calc.py  # producer (Airsense)
-├─ atmosense-ctl.py       # consumer (CtrlBridge)
-├─ systemd/
-│   ├─ atmosense-calc.service
-│   └─ atmosense-ctl.service
-└─  tests/                     # pytest suite
-
----
 Key environment variables
 
 AIRSENSE_HMAC_KEY     32-char hex, shared by both services
