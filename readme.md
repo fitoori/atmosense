@@ -6,11 +6,13 @@ cruise-speed parameters so that forward-flight power ≈ hover power.  Runs
 entirely on the companion computer; the ArduPilot firmware remains stock.
 
 How it works:
-	1.	Producer obtains baro pressure + temperature from
+	
+ 1.	Producer obtains baro pressure + temperature from
 MAVLink SCALED_PRESSURE, calculates air density and target cruise speed,
 signs two 27-byte UDP frames (AIRDENS and CRSPEED) each second, and writes
 “RHO_LAST / V_TARGET_LAST” to /opt/airsense/.env every 60 s.
-	2.	Consumer verifies HMAC + sequence, low-pass filters CRSPEED, and, when
+	
+ 2.	Consumer verifies HMAC + sequence, low-pass filters CRSPEED, and, when
 change ≥2 % or 60 s elapsed, writes WPNAV_SPEED and LOIT_SPEED via PARAM_SET
 (clamped 250–1200 cm s⁻¹).  If no CRSPEED arrives for 15 s it loads the
 last .env value, pushes it, and warns the operator.
